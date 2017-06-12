@@ -1,6 +1,6 @@
 {
   "name": "react-validation",
-  "version": "2.10.9",
+  "version": "2.11.0",
   "description": "validation components",
   "keywords": [
     "react",
@@ -18,14 +18,14 @@
   "main": "lib/build/validation.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lesha-spr/react-validation.git"
+    "url": "https://github.com/nelsonmenezes/react-validation.git"
   },
   "author": "Oleksii An",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Lesha-spr/react-validation/issues"
+    "url": "https://github.com/nelsonmenezes/react-validation/issues"
   },
-  "homepage": "https://github.com/Lesha-spr/react-validation",
+  "homepage": "https://github.com/nelsonmenezes/react-validation",
   "peerDependencies": {
     "react": "*",
     "classnames": "*"
