@@ -28,7 +28,8 @@
   "homepage": "https://github.com/nelsonmenezes/react-validation",
   "peerDependencies": {
     "react": "*",
-    "classnames": "*"
+    "classnames": "*",
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

@@ -119,7 +119,7 @@ That's it. We can now use it in our React components:
 
 ```javascript
 import Validation from 'react-validation';
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 export default class Registration extends Component {
     render() {
