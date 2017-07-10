@@ -1,6 +1,6 @@
 {
   "name": "react-validation",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "validation components",
   "keywords": [
     "react",
@@ -28,7 +28,6 @@
   "homepage": "https://github.com/nelsonmenezes/react-validation",
   "peerDependencies": {
     "react": "*",
-    "classnames": "*",
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
@@ -83,6 +82,7 @@
     }
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "hoist-non-react-statics": "^1.2.0"
   }
 }

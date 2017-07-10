@@ -7,13 +7,6 @@ import Base from './../components/Base/Base';
 
 export default function selectFactory(WrappedComponent) {
     class CustomSelect extends Base {
-        static propTypes = {
-            validations: PropTypes.arrayOf(PropTypes.string).isRequired,
-            errorClassName: PropTypes.string,
-            containerClassName: PropTypes.string,
-            errorContainerClassName: PropTypes.string
-        };
-
         static contextTypes = {
             register: PropTypes.func.isRequired,
             unregister: PropTypes.func.isRequired,
@@ -50,9 +43,11 @@ export default function selectFactory(WrappedComponent) {
                 containerClassName,
                 errorContainerClassName,
                 className,
+                /* eslint-disable */
                 value,
                 onChange,
                 onBlur,
+                /* eslint-enable */
                 ...rest } = this.props;
             // TODO: Refactor conditions
             const isInvalid = this.state.isUsed
@@ -76,10 +71,13 @@ export default function selectFactory(WrappedComponent) {
                 }),
                 onChange: this.onChange,
                 onBlur: this.onBlur,
-                value: this.state.value,
                 hint,
                 ...rest
             };
+
+            if (this.onChange) {
+                wrappedProps.value = this.state.value;
+            }
 
             return createElement(WrappedComponent, wrappedProps);
         }

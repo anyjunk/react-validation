@@ -7,13 +7,6 @@ import Base from './../components/Base/Base';
 
 export default function inputFactory(WrappedComponent) {
     class CustomInput extends Base {
-        static propTypes = {
-            validations: PropTypes.arrayOf(PropTypes.string).isRequired,
-            errorClassName: PropTypes.string,
-            containerClassName: PropTypes.string,
-            errorContainerClassName: PropTypes.string
-        };
-
         static contextTypes = {
             register: PropTypes.func.isRequired,
             unregister: PropTypes.func.isRequired,
@@ -42,16 +35,16 @@ export default function inputFactory(WrappedComponent) {
 
         render() {
             const {
-                /* eslint-disable */
-                validations,
-                /* eslint-enable */
                 errorClassName,
                 containerClassName,
                 errorContainerClassName,
                 className,
+                /* eslint-disable */
                 value,
+                validations,
                 onChange,
                 onBlur,
+                /* eslint-enable */
                 ...rest } = this.props;
             // TODO: Refactor conditions
             const isInvalid = this.state.isUsed
@@ -62,7 +55,9 @@ export default function inputFactory(WrappedComponent) {
             let hint = null;
 
             if (isInvalid) {
-                hint = typeof error === 'function' ? error(changedValue, this.context.components) : rules[error].hint(changedValue, this.context.components);
+                hint = typeof error === 'function'
+                  ? error(changedValue, this.context.components)
+                  : rules[error].hint(changedValue, this.context.components);
             }
 
             const wrappedProps = {
@@ -74,14 +69,17 @@ export default function inputFactory(WrappedComponent) {
                     [className]: !!className,
                     [errorClassName]: !!error && errorClassName
                 }),
-                checked: this.state.isChecked,
                 onChange: this.onChange,
                 onBlur: this.onBlur,
                 type: this.props.type || 'text',
-                value: changedValue,
                 hint,
                 ...rest
             };
+
+            if (this.onChange) {
+                wrappedProps.checked = this.state.isChecked;
+                wrappedProps.value = changedValue;
+            }
 
             return createElement(WrappedComponent, wrappedProps);
         }
